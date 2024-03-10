@@ -1,0 +1,32 @@
+<div class="container mt-3">
+<h2>Category List</h2>
+<button pButton type="button" label="Add New Category" icon="pi pi-plus" routerLink="/category/add" routerLinkActive="router-link-active" ></button>
+
+<div class="card">
+  <p-table [value]="categories" [tableStyle]="{ 'min-width': '50rem' }"
+  dataKey="id" [paginator]="true" [rows]="5">
+      <ng-template pTemplate="header">
+          <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Image</th>
+              <th>Actions</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-category>
+          <tr>
+              <td>{{ category.id }}</td>
+              <td><p-button [text]="true" [raised]="true" [routerLink]="['/category/productbycategory',category.id]"
+                routerLinkActive="router-link-active" >{{ category.name }}</p-button></td>
+              <td><img [src]="category.image" alt="" width="50px"></td>
+              <td>
+                <button pButton type="button" (click)="editCategory(category.id)" icon="pi pi-pencil" class="p-button-primary mr-2"></button>
+                <button pButton type="button" (click)="deleteCategory(category.id)" icon="pi pi-trash" class="p-button-danger mr-2"></button>
+
+              </td>
+            </tr>
+      </ng-template>
+  </p-table>
+</div>
+
+</div>
